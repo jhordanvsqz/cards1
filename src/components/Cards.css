@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+.cards-container {
+    background-color: #002152;
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.cards-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1028px;
+    display: flex;
+    gap: 10px;
+    align-items: stretch;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    flex: 1 1 300px;
+    max-width: 336px;
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(to right, rgba(13, 10, 25, 0.52), rgba(13, 10, 25, 0.52));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    /* Sombra sutil para profundidad */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Efecto de brillo superior/izquierdo simulando los SVGs de gradiente radial */
+.card::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(40, 78, 233, 0.3) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(92, 122, 248, 0.2) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* Estilos específicos para la tarjeta verde */
+.card.card-green {
+    background: linear-gradient(180deg, rgba(13, 10, 25, 0.6) 0%, rgba(20, 40, 20, 0.6) 100%);
+    border-color: rgba(126, 217, 86, 0.2);
+}
+
+.card.card-green::before {
+    width: 300px;
+    height: 300px;
+    top: -100px;
+    left: -100px;
+    background: radial-gradient(circle, rgba(126, 217, 86, 0.15) 0%, transparent 70%);
+    filter: blur(20px);
+}
+
+.card.card-green::after {
+    width: 300px;
+    height: 300px;
+    bottom: -100px;
+    right: -100px;
+    background: radial-gradient(circle, rgba(126, 217, 86, 0.1) 0%, transparent 70%);
+    filter: blur(20px);
+}
+
+.card-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.card-icon-wrapper {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-text {
+    font-size: 18px;
+    line-height: 24px;
+    color: white;
+    font-weight: 400;
+    margin: 0;
+}
+
+.card-text span {
+    color: rgba(250, 249, 251, 0.75);
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 768px) {
+    .cards-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+        /* Estirar para ocupar el ancho */
+        padding: 0 20px;
+        /* Añadir padding lateral si es necesario */
+    }
+
+    .card {
+        width: 100%;
+        max-width: none;
+        /* Eliminar restricción de ancho */
+        flex: 0 0 auto;
+        /* IMPORTANTE: Resetear flex para que no aplique 300px a la altura */
+        height: auto;
+        /* Altura automática basada en contenido */
+    }
+}
